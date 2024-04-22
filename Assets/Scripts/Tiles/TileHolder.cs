@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Tiles
+{
+	public class TileHolder : MonoBehaviour
+    {
+        [SerializeField] private List<Tile> _tilesBundle;
+
+        public List<Tile> TilesBundle => _tilesBundle;
+        public int Rows;
+        public int Columns;
+
+        public event Action<Tile> TileBecameAvailable;
+        public event Action<Tile, ITileContent> TileContentChanged;
+
+        private void Awake()
+        {
+            _tilesBundle.ForEach(tile => tile.TileContentChanged += OnTileContentChanged);
+        }
+
+		private void OnDestroy()
+		{
+			_tilesBundle.ForEach(tile => tile.TileContentChanged -= OnTileContentChanged);
+		}
+
+		private void OnTileContentChanged(Tile tile, ITileContent tileContent)
+        {
+            TileContentChanged?.Invoke(tile, tileContent);
+            if (tileContent == null)
+            {
+                TileBecameAvailable?.Invoke(tile);
+            }
+        }
+    }
+}
