@@ -15,18 +15,12 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private FruitEvolutionConfig _fruitEvolutionConfig;
     [SerializeField] private ScenesConfig _scenesConfig;
     [SerializeField] private TilesColorsConfig _tileColorsConfig;
+    [SerializeField] private FruitModels _fruitModels;
     #endregion
 
     private States _states;
 
-    [SerializeField] private float _mouseScrollModifier = 2f;
-    [SerializeField] private int _finalBuildingIncomeDelay = 5;
     [SerializeField] private float _delayToMerdge = 1f;
-    [SerializeField] private ulong _startMoneyAmount;
-    [SerializeField] private ulong _startGemsAmount;
-    [SerializeField] private float _finalBuildingCameraSpeed = 10f;
-    [SerializeField] private float _buildingTransitionToUIEndScale = 0.2f;
-    [SerializeField] private int _tutorialIndexToEnableBonusBoxSpawner;
 
     public override void InstallBindings()
     {
@@ -34,7 +28,7 @@ public class ProjectInstaller : MonoInstaller
         DataController dataController = new DataController(dictionaryProgressManager);
         LevelEventsProvider levelEventsProvider = new LevelEventsProvider();
   
-        FruitSpawner fruitSpawner = new FruitSpawner();
+        FruitSpawner fruitSpawner = new FruitSpawner(_fruitModels);
 
         LevelProvider levelProvider = new LevelProvider();
         InputActivator inputActivator = new InputActivator();
@@ -44,7 +38,7 @@ public class ProjectInstaller : MonoInstaller
         IInput input;
         if (isEditor)
         {
-            input = new MouseInput(_mouseScrollModifier);
+            input = new MouseInput();
         }
         else
         {
@@ -94,5 +88,6 @@ public class ProjectInstaller : MonoInstaller
 
         Container.Bind<LevelDataController>().FromInstance(levelDataController).AsSingle();
         Container.Bind<States>().FromInstance(_states).AsSingle();
+        Container.Bind<FruitName>().FromInstance(_initialFruitName);
     }
 }

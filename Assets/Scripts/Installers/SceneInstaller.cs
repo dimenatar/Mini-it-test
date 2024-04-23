@@ -10,9 +10,7 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private FrameUpdater _updater;
     [SerializeField] private SecondsStepUpdater _secondsStepUpdater;
     [SerializeField] private Level _level;
-
-    [SerializeField] private float _finalBuildingsAnimationDuration = 2f;
-    [SerializeField] private float _delayToShowPanel = 1f;
+    [SerializeField] private InitialFruitSpawner _initialFruitSpawner;
 
     [Inject]
     private void Construct(
@@ -27,6 +25,7 @@ public class SceneInstaller : MonoInstaller
         inputEvents.SetCamera(_camera);
         tileHighlighter.SetDragger(_dragger);
         _updater.AddTickable(input);
+        _secondsStepUpdater.AddTickable(_initialFruitSpawner);
         inputEvents.Enable();
         inputActivator.AddActivatables(_dragger);
         levelDataController.SetLevelProgresses(_level);
@@ -37,6 +36,7 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<Level>().FromInstance(_level);
         Container.Bind<Dragger>().FromInstance(_dragger).AsTransient();
         Container.Bind<FrameUpdater>().FromInstance(_updater).AsTransient();
+        Container.Bind<InitialFruitSpawner>().FromInstance(_initialFruitSpawner);
         Container.Bind<InitialState>().AsTransient();
     }
 }

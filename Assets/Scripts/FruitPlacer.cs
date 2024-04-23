@@ -133,7 +133,7 @@ public class FruitPlacer : MonoBehaviour
 
     private Tile GetTileWithDraggable(IDraggable draggable)
     {
-        if (draggable is not Fruit fruit) throw new System.Exception("draggable isn't building");
+        if (draggable is not Fruit fruit) throw new System.Exception("draggable isn't fruit");
 
         return fruit.Tile;
     }

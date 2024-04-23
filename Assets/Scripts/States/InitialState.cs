@@ -12,7 +12,6 @@ public class InitialState : IState
     private DataController _dataController;
     private LevelDataController _levelDataController;
 
-    public event Action<IState> StateFinished;
     public event Action Spawned;
 
     [Inject]
@@ -28,8 +27,7 @@ public class InitialState : IState
         _levelDataController = levelDataController;
     }
 
-    public void SetSceneData(
-        Level level)
+    public void SetSceneData(Level level)
     {
         _level = level;
     }

@@ -66,8 +66,8 @@ public class InitialFruitSpawner : MonoBehaviour, IProgress, ITickable
 			if (PassedTime == 0)
 			{
 				SpawnFruit();
+				PassedTime = Delay;
 			}
-			PassedTime = Delay;
 		}
 	}
 

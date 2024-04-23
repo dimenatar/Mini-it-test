@@ -1,4 +1,3 @@
-using System;
 using Zenject;
 
 public class SaveDataState : IState
@@ -12,8 +11,6 @@ public class SaveDataState : IState
         _dataController = dataController;
         _levelDataController = levelDataController;
     }
-
-    public event Action<IState> StateFinished;
 
     public void Enter(object data)
     {

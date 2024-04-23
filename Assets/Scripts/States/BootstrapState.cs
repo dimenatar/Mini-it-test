@@ -15,8 +15,6 @@ public class BootstrapState : IState
         _levelLoader = levelLoader;
     }
 
-    public event Action<IState> StateFinished;
-
     public async void Enter(object data)
     {
         _dataController.SetSavingState(true);

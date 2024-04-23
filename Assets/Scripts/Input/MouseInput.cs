@@ -4,13 +4,7 @@ using UnityEngine.EventSystems;
 
 public class MouseInput : TickInput
 {
-    private float _scrollModifier;
     private bool _isEnabled = true;
-
-    public MouseInput(float scrollModifier) : base()
-    {
-        _scrollModifier = scrollModifier;
-    }
 
     public override bool IsEnabled => _isEnabled;
 
@@ -73,10 +67,6 @@ public class MouseInput : TickInput
             {
                 MouseUpNonUI?.Invoke(Input.mousePosition);
             }
-        }
-        else if (Input.mouseScrollDelta.y != 0f)
-        {
-            Zoomed?.Invoke(-Input.mouseScrollDelta.y * _scrollModifier);
         }
     }
 }

@@ -78,6 +78,7 @@ MonoBehaviour:
   _fruitEvolutionConfig: {fileID: 11400000, guid: 7c4c9574698a8d4408807bcc78cf92c1, type: 2}
   _scenesConfig: {fileID: 11400000, guid: f781ff5953e9a6547bc440abe91fe4cd, type: 2}
   _tileColorsConfig: {fileID: 11400000, guid: f40f16c12d176194891311d7e7e641b3, type: 2}
+  _fruitModels: {fileID: 11400000, guid: 947c518c50c98514c80cb80bad0d0ed4, type: 2}
   _mouseScrollModifier: 2
   _finalBuildingIncomeDelay: 5
   _delayToMerdge: 1
