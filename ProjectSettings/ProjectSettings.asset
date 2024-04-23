@@ -790,23 +790,23 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: DOTWEEN
-    EmbeddedLinux: DOTWEEN
-    GameCoreScarlett: DOTWEEN
-    GameCoreXboxOne: DOTWEEN
-    LinuxHeadlessSimulation: DOTWEEN
-    Nintendo Switch: DOTWEEN
-    PS4: DOTWEEN
-    PS5: DOTWEEN
-    QNX: DOTWEEN
-    Stadia: DOTWEEN
-    Standalone: DOTWEEN
-    VisionOS: DOTWEEN
-    WebGL: DOTWEEN
-    Windows Store Apps: DOTWEEN
-    XboxOne: DOTWEEN
-    iPhone: DOTWEEN
-    tvOS: DOTWEEN
+    Android: DOTWEEN;LEGACY_INPUT_MANGER
+    EmbeddedLinux: DOTWEEN;LEGACY_INPUT_MANGER
+    GameCoreScarlett: DOTWEEN;LEGACY_INPUT_MANGER
+    GameCoreXboxOne: DOTWEEN;LEGACY_INPUT_MANGER
+    LinuxHeadlessSimulation: DOTWEEN;LEGACY_INPUT_MANGER
+    Nintendo Switch: DOTWEEN;LEGACY_INPUT_MANGER
+    PS4: DOTWEEN;LEGACY_INPUT_MANGER
+    PS5: DOTWEEN;LEGACY_INPUT_MANGER
+    QNX: DOTWEEN;LEGACY_INPUT_MANGER
+    Stadia: DOTWEEN;LEGACY_INPUT_MANGER
+    Standalone: DOTWEEN;LEGACY_INPUT_MANGER
+    VisionOS: DOTWEEN;LEGACY_INPUT_MANGER
+    WebGL: DOTWEEN;LEGACY_INPUT_MANGER
+    Windows Store Apps: DOTWEEN;LEGACY_INPUT_MANGER
+    XboxOne: DOTWEEN;LEGACY_INPUT_MANGER
+    iPhone: DOTWEEN;LEGACY_INPUT_MANGER
+    tvOS: DOTWEEN;LEGACY_INPUT_MANGER
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
