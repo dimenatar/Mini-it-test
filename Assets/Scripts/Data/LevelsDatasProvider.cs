@@ -58,7 +58,7 @@ public class LevelsDatasProvider : IProgress
         }
         islandData = new TileDatasHolder(tileDatas);
 
-        _levelData.islandData = islandData;
+        _levelData.tileDatasHolder = islandData;
     }
 
 	private TileData CreateTileData(Tile tile)

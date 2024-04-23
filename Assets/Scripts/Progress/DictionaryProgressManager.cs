@@ -104,7 +104,12 @@ public class DictionaryProgressManager
         return Convert.ToInt64(GetValue(key, defaultValue));
     }
 
-    public bool GetBool(string key, bool defaultValue = false)
+	public float GetFloat(string key, float defaultValue = 0f)
+	{
+		return Convert.ToSingle(GetValue(key, defaultValue));
+	}
+
+	public bool GetBool(string key, bool defaultValue = false)
     {
         return Convert.ToBoolean(GetValue(key, defaultValue));
     }

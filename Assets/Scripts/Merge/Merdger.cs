@@ -71,7 +71,7 @@ namespace Merdge
             var result = _formulas.Find(formula => formula.Component == fruits[0].FruitData.FruitName).Result;
 
             _inputActivator.EnableInput();
-            var resultFruit = _buildingCreator.CreateBuilding(tile, result);
+            var resultFruit = _buildingCreator.SpawnFruit(tile, result);
             //var resultBuilding = _factory.CreateBuilding(result, tile.transform.position, tile.transform);
             for (int i = 0; i < fruits.Length; i++)
             {

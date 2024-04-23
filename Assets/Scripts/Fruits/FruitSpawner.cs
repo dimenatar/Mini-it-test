@@ -4,7 +4,7 @@ namespace Fruits
 {
 	public class FruitSpawner
     {
-        public Fruit CreateBuilding(Tile tile, FruitName fruitName)
+        public Fruit SpawnFruit(Tile tile, FruitName fruitName)
         {
             return null;
         }

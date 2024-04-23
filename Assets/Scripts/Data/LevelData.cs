@@ -5,15 +5,15 @@ using System;
 public class LevelData
 {
     public FruitName initialFruit;
-    public TileDatasHolder islandData;
+    public TileDatasHolder tileDatasHolder;
 
     public LevelData() 
     {
-
+        tileDatasHolder = new TileDatasHolder();
     }
 
-    public LevelData(TileDatasHolder islandData) : this()
+    public LevelData(TileDatasHolder tileDatasHolder) : this()
     {
-        this.islandData = islandData;
+        this.tileDatasHolder = tileDatasHolder;
     }
 }

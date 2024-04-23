@@ -43,7 +43,7 @@ public class InitialState : IState
         _levelDataController.SetLevelData(levelData);
         _levelDataController.LoadDataToProgresses();
 
-        TileDatasHolder tileDatasHolder = levelData.islandData;
+        TileDatasHolder tileDatasHolder = levelData.tileDatasHolder;
 		SetupGrid(levelData, _level);
 
         Spawned?.Invoke();
@@ -51,14 +51,17 @@ public class InitialState : IState
 
     private void SetupGrid(LevelData levelData, Level level)
     {
+        List<TileData> tileDatas = levelData.tileDatasHolder.TileDatas;
+
+        if (tileDatas.Count == 0) return;
+
         List<Tile> tileBundle = level.TileHolder.TilesBundle;
-        List<TileData> tileDatas = levelData.islandData.TileDatas;
 
         for (int i = 0; i < tileBundle.Count; i++)
         {
             if (tileDatas[i].FruitName != FruitName.None)
             {
-                _fruitSpawner.CreateBuilding(tileBundle[i], tileDatas[i].FruitName);
+                _fruitSpawner.SpawnFruit(tileBundle[i], tileDatas[i].FruitName);
             }
         }
     }
