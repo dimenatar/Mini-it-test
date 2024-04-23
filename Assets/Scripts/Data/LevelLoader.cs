@@ -15,14 +15,14 @@ public class LevelLoader
 
     public async Task LoadSceneAsync(SceneType sceneType)
     {
-        var scene = _scenesConfig.SceneByStage[sceneType];
+        var scene = _scenesConfig.Scenes[sceneType];
         var loading = SceneManager.LoadSceneAsync(scene);
         await loading;
     }
 
     public void LoadScene(SceneType sceneType)
     {
-        var scene = _scenesConfig.SceneByStage[sceneType];
+        var scene = _scenesConfig.Scenes[sceneType];
         SceneManager.LoadScene(scene);
     }
 }

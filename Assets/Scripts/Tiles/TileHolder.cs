@@ -9,8 +9,6 @@ namespace Tiles
         [SerializeField] private List<Tile> _tilesBundle;
 
         public List<Tile> TilesBundle => _tilesBundle;
-        public int Rows;
-        public int Columns;
 
         public event Action<Tile> TileBecameAvailable;
         public event Action<Tile, ITileContent> TileContentChanged;

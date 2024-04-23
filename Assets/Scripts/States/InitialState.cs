@@ -6,8 +6,6 @@ using Zenject;
 
 public class InitialState : IState
 {
-    private FruitName _initialFruit;
-
     private Level _level;
     private FruitSpawner _fruitSpawner;
     private LevelsDatasProvider _levelsDatasProvider;
@@ -41,25 +39,28 @@ public class InitialState : IState
         _dataController.SetSavingState(true);
         _dataController.LoadProgresses();
 
-        //LevelData levelData = _levelsDatasProvider.LevelDatas.levelDatas.Find(data => data.stageType == _stageType);
-        //_levelDataController.SetLevelData(levelData);
-        //_levelDataController.LoadDataToProgresses();
+        LevelData levelData = _levelsDatasProvider.LevelData;
+        _levelDataController.SetLevelData(levelData);
+        _levelDataController.LoadDataToProgresses();
 
-        //IslandData islandData = levelData.islandData;
-        //SetupIsland(levelData, _level, _initialFruit);
+        TileDatasHolder tileDatasHolder = levelData.islandData;
+		SetupGrid(levelData, _level);
 
         Spawned?.Invoke();
     }
 
-    private void SetupIsland(LevelData levelData, Level level, FruitName initialFruit)
+    private void SetupGrid(LevelData levelData, Level level)
     {
-        //List<Tile> tileBundle = level.Island.Tiles.TilesBundle;
-        //List<TileData> tileDatas = levelData.islandData.tileDatas;
+        List<Tile> tileBundle = level.TileHolder.TilesBundle;
+        List<TileData> tileDatas = levelData.islandData.TileDatas;
 
-        //for (int i = 0; i < tileBundle.Count; i++)
-        //{
-        //    tileBundle[i].Initialise(tileDatas[i].ID);
-        //}
+        for (int i = 0; i < tileBundle.Count; i++)
+        {
+            if (tileDatas[i].FruitName != FruitName.None)
+            {
+                _fruitSpawner.CreateBuilding(tileBundle[i], tileDatas[i].FruitName);
+            }
+        }
     }
 
     public void Exit() { }

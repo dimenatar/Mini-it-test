@@ -20,7 +20,8 @@ public class SceneInstaller : MonoInstaller
         TickInput input,
         InputEvents inputEvents,
         TileHighlighter tileHighlighter,
-        InputActivator inputActivator)
+        InputActivator inputActivator,
+        LevelDataController levelDataController)
     {
         initialState.SetSceneData(_level);
         inputEvents.SetCamera(_camera);
@@ -28,6 +29,7 @@ public class SceneInstaller : MonoInstaller
         _updater.AddTickable(input);
         inputEvents.Enable();
         inputActivator.AddActivatables(_dragger);
+        levelDataController.SetLevelProgresses(_level);
     }
 
     public override void InstallBindings()

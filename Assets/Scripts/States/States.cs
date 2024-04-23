@@ -59,7 +59,7 @@ public class States : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
     {
-        if (_scenesConfig.SceneByStage.ContainsValue(scene.name))
+        if (_scenesConfig.Scenes.ContainsValue(scene.name))
         {
             _stateMachine.SetState<InitialState>();
         }

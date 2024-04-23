@@ -11,9 +11,6 @@ namespace Fruits
         [SerializeField] private Collider _collider;
         [SerializeField] private Vector3 _offset;
 
-        [SerializeField] private float _flyHeight = 2f;
-        [SerializeField] private float _flySpeed = 20f;
-
         private float _startHeight;
         private float _currentAdditiveHeight;
 
@@ -38,8 +35,7 @@ namespace Fruits
 
         public void ReceivePosition(Vector3 position)
         {
-            transform.position = new Vector3(position.x, transform.position.y, position.z);
-            transform.localPosition = new Vector3(transform.localPosition.x, _startHeight + position.y + _offset.y + _currentAdditiveHeight, transform.localPosition.z);
+            transform.position = position + _offset;
         }
 
         public void SetTile(Tile tile)
@@ -52,43 +48,12 @@ namespace Fruits
 
         public void StartDrag()
         {
-            float destinationHeight = _startHeight + _flyHeight;
-            StopAllCoroutines();
-            StartCoroutine(MoveToLocalY(destinationHeight, _flySpeed));
+
         }
 
         public void StopDrag()
         {
-            StopAllCoroutines();
-            StartCoroutine(MoveToLocalY(_startHeight, _flySpeed));
-        }
 
-        private IEnumerator MoveToLocalY(float destinationHeight, float speed)
-        {
-            if (transform.localPosition.y < destinationHeight)
-            {
-                while (transform.localPosition.y < destinationHeight)
-                {
-
-                    Vector3 position = transform.localPosition;
-                    _currentAdditiveHeight = position.y + speed * Time.deltaTime;
-                    transform.localPosition = new Vector3(transform.localPosition.x, _currentAdditiveHeight, transform.localPosition.z);
-                    yield return null;
-                }
-            }
-            else
-            {
-                while (transform.localPosition.y > destinationHeight)
-                {
-                    Vector3 position = transform.localPosition;
-                    _currentAdditiveHeight = position.y - speed * Time.deltaTime;
-                    transform.localPosition =  new Vector3 (transform.localPosition.x, _currentAdditiveHeight, transform.localPosition.z);
-                    yield return null;
-                }
-                //_dropParticles.Play();
-                Dropped?.Invoke(this);
-            }
-            transform.localPosition = new Vector3(transform.localPosition.x, destinationHeight, transform.localPosition.z);
         }
     }
 }

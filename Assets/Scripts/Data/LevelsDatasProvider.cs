@@ -48,7 +48,7 @@ public class LevelsDatasProvider : IProgress
     {
 
         List<TileData> tileDatas = new List<TileData>();
-        IslandData islandData;
+        TileDatasHolder islandData;
         for (int i = 0; i < tileHolder.TilesBundle.Count; i++)
         {
             //BuildingName name = _tiles.TilesBundle[i].IsFree ? BuildingName.None : _tiles.TilesBundle[i].TileContent.BuildingName;
@@ -56,7 +56,7 @@ public class LevelsDatasProvider : IProgress
             TileData tileData = CreateTileData(tile);
             tileDatas.Add(tileData);
         }
-        islandData = new IslandData(tileDatas);
+        islandData = new TileDatasHolder(tileDatas);
 
         _levelData.islandData = islandData;
     }

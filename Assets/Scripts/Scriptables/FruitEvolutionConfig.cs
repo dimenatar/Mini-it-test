@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Scriptables
 {
-	public class FruitEvolutionConfig : MonoBehaviour
+    [CreateAssetMenu(order = 43)]
+	public class FruitEvolutionConfig : ScriptableObject
     {
         [SerializeField] private List<FruitsEvolutionFormula> _formulas;
 

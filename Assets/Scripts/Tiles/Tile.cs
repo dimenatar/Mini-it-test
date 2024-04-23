@@ -7,12 +7,12 @@ namespace Tiles
     public class Tile : MonoBehaviour
     {
         [SerializeField] private Renderer _renderer;
+        [SerializeField] private int _id;
 
         private Color _defaultColor;
 
+        public int ID => _id;
         public bool IsFree { get; set; } = true;
-
-        public int ID { get; private set; }
         public ITileContent TileContent { get; private set; }
 
         public event Action<Tile, ITileContent> TileContentChanged;
@@ -20,11 +20,6 @@ namespace Tiles
         protected virtual void Awake()
         {
             _defaultColor = _renderer.material.color;
-        }
-
-        public void Initialise(int id)
-        {
-            ID = id;
         }
 
         public void SetTileContent(ITileContent tileContent)
