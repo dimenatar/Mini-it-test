@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2da9d62f563ca849a4c1e2e597bbb5c, type: 3}
+  m_Name: Fruit Data Bundle
+  m_EditorClassIdentifier: 
+  _datas:
+  - _fruitName: 1
+    _globalLevel: 0
+  - _fruitName: 2
+    _globalLevel: 1
+  - _fruitName: 3
+    _globalLevel: 2
+  - _fruitName: 4
+    _globalLevel: 3
+  - _fruitName: 5
+    _globalLevel: 4
+  - _fruitName: 6
+    _globalLevel: 5
+  - _fruitName: 7
+    _globalLevel: 6
+  - _fruitName: 8
+    _globalLevel: 7
+  - _fruitName: 9
+    _globalLevel: 8

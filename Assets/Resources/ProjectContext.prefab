@@ -79,11 +79,5 @@ MonoBehaviour:
   _scenesConfig: {fileID: 11400000, guid: f781ff5953e9a6547bc440abe91fe4cd, type: 2}
   _tileColorsConfig: {fileID: 11400000, guid: f40f16c12d176194891311d7e7e641b3, type: 2}
   _fruitModels: {fileID: 11400000, guid: 947c518c50c98514c80cb80bad0d0ed4, type: 2}
-  _mouseScrollModifier: 2
-  _finalBuildingIncomeDelay: 5
+  _fruitDataBundle: {fileID: 11400000, guid: b49bb6597c5a39343947420f00e7c87d, type: 2}
   _delayToMerdge: 1
-  _startMoneyAmount: 0
-  _startGemsAmount: 0
-  _finalBuildingCameraSpeed: 10
-  _buildingTransitionToUIEndScale: 0.2
-  _tutorialIndexToEnableBonusBoxSpawner: 0

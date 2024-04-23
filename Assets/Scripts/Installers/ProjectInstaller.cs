@@ -16,6 +16,7 @@ public class ProjectInstaller : MonoInstaller
     [SerializeField] private ScenesConfig _scenesConfig;
     [SerializeField] private TilesColorsConfig _tileColorsConfig;
     [SerializeField] private FruitModels _fruitModels;
+    [SerializeField] private FruitDataBundle _fruitDataBundle;
     #endregion
 
     private States _states;
@@ -28,7 +29,7 @@ public class ProjectInstaller : MonoInstaller
         DataController dataController = new DataController(dictionaryProgressManager);
         LevelEventsProvider levelEventsProvider = new LevelEventsProvider();
   
-        FruitSpawner fruitSpawner = new FruitSpawner(_fruitModels);
+        FruitSpawner fruitSpawner = new FruitSpawner(_fruitModels, _fruitDataBundle);
 
         LevelProvider levelProvider = new LevelProvider();
         InputActivator inputActivator = new InputActivator();

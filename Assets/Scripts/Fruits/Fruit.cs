@@ -1,20 +1,18 @@
+using Extensions;
 using System;
-using System.Collections;
 using Tiles;
+using TMPro;
 using UnityEngine;
 
 namespace Fruits
 {
 	public class Fruit : MonoBehaviour, IDraggable, ITileContent
     {
-        [SerializeField] private FruitData _fruitData;
+        [SerializeField] private TextMeshPro _text;
         [SerializeField] private Collider _collider;
         [SerializeField] private Vector3 _offset;
 
-        private float _startHeight;
-        private float _currentAdditiveHeight;
-
-        public FruitData FruitData => _fruitData;
+        public FruitData FruitData { get; private set; }
         public Collider Collider => _collider;
         public Tile Tile { get; private set; }
         public Bounds Bounds => _collider.bounds;
@@ -23,14 +21,15 @@ namespace Fruits
         public event Action<Fruit> Destroyed;
         public event Action<Fruit> Dropped;
 
-        private void Start()
-        {
-            _startHeight = transform.localPosition.y;
-        }
-
         private void OnDestroy()
         {
             Destroyed?.Invoke(this);
+        }
+
+        public void SetFruitData(FruitData data)
+        {
+            FruitData = data;
+            _text.SetText(data.GlobalLevel);
         }
 
         public void ReceivePosition(Vector3 position)

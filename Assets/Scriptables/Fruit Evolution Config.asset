@@ -17,3 +17,15 @@ MonoBehaviour:
     _result: 2
   - _component: 2
     _result: 3
+  - _component: 3
+    _result: 4
+  - _component: 4
+    _result: 5
+  - _component: 5
+    _result: 6
+  - _component: 6
+    _result: 7
+  - _component: 7
+    _result: 8
+  - _component: 8
+    _result: 9
