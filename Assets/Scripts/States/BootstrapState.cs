@@ -1,27 +1,32 @@
-using System;
+using Data;
+using Progress;
+using Scenes;
 using Zenject;
 
-public class BootstrapState : IState
+namespace States
 {
-    private DataController _dataController;
-    private LevelsDatasProvider _levelDataProvider;
-    private LevelLoader _levelLoader;
+	public class BootstrapState : IState
+	{
+		private DataController _dataController;
+		private LevelsDatasProvider _levelDataProvider;
+		private LevelLoader _levelLoader;
 
-    [Inject]
-    public BootstrapState(DataController dataController, LevelsDatasProvider levelDataProvider, LevelLoader levelLoader)
-    {
-        _dataController = dataController;
-        _levelDataProvider = levelDataProvider;
-        _levelLoader = levelLoader;
-    }
+		[Inject]
+		public BootstrapState(DataController dataController, LevelsDatasProvider levelDataProvider, LevelLoader levelLoader)
+		{
+			_dataController = dataController;
+			_levelDataProvider = levelDataProvider;
+			_levelLoader = levelLoader;
+		}
 
-    public async void Enter(object data)
-    {
-        _dataController.SetSavingState(true);
-        _dataController.LoadProgresses();
+		public async void Enter(object data)
+		{
+			_dataController.SetSavingState(true);
+			_dataController.LoadProgresses();
 
-        await _levelLoader.LoadSceneAsync(SceneType.Main);
-    }
+			await _levelLoader.LoadSceneAsync(SceneType.Main);
+		}
 
-    public void Exit() { }
+		public void Exit() { }
+	}
 }

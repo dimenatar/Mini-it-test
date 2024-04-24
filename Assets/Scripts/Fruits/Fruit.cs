@@ -41,20 +41,8 @@ namespace Fruits
 
         public void SetTile(Tile tile)
         {
-            //transform.position = tile.GetBildingPoint() + _offset;
-            //ReceivePosition(tile.GetBildingPoint());
             transform.SetParent(tile.transform);
             Tile = tile;
-        }
-
-        public void StartDrag()
-        {
-
-        }
-
-        public void StopDrag()
-        {
-
         }
 
         public void ScaleIn()

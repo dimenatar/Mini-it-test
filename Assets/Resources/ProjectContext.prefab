@@ -80,4 +80,5 @@ MonoBehaviour:
   _tileColorsConfig: {fileID: 11400000, guid: f40f16c12d176194891311d7e7e641b3, type: 2}
   _fruitModels: {fileID: 11400000, guid: 947c518c50c98514c80cb80bad0d0ed4, type: 2}
   _fruitDataBundle: {fileID: 11400000, guid: b49bb6597c5a39343947420f00e7c87d, type: 2}
+  _particlesConfig: {fileID: 11400000, guid: 24d8d787ad8e463418c91c2580708625, type: 2}
   _delayToMerdge: 0.3

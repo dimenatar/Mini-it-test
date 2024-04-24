@@ -1,7 +1,10 @@
-public class FrameUpdater : Updater
+namespace Updaters
 {
-    private void Update()
-    {
-        InvokeTicks();
-    }
+	public class FrameUpdater : Updater
+	{
+		private void Update()
+		{
+			InvokeTicks();
+		}
+	}
 }

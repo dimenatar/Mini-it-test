@@ -1,4 +1,7 @@
-public interface IMouseDownListener
+namespace UserInput
 {
-    void MouseDown();
+	public interface IMouseDownListener
+	{
+		void MouseDown();
+	}
 }

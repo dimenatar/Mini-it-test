@@ -1,13 +1,16 @@
 using Fruits;
 
-public class TileData
+namespace Data
 {
-	public TileData(int iD, FruitName fruitName)
+	public class TileData
 	{
-		ID = iD;
-		FruitName = fruitName;
-	}
+		public TileData(int iD, FruitName fruitName)
+		{
+			ID = iD;
+			FruitName = fruitName;
+		}
 
-	public int ID { get; private set; }
-	public FruitName FruitName { get; private set; }
+		public int ID { get; private set; }
+		public FruitName FruitName { get; private set; }
+	}
 }

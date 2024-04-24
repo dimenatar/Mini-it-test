@@ -1,8 +1,11 @@
-public interface IProgress
+namespace Progress
 {
-    public bool IsLoaded { get; }
+	public interface IProgress
+	{
+		public bool IsLoaded { get; }
 
-    void ClearProgress();
-    void LoadProgress(DictionaryProgressManager dictionaryProgressManager);
-    void SaveProgress(DictionaryProgressManager dictionaryProgressManager);
+		void ClearProgress();
+		void LoadProgress(DictionaryProgressManager dictionaryProgressManager);
+		void SaveProgress(DictionaryProgressManager dictionaryProgressManager);
+	}
 }

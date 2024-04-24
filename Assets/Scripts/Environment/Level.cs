@@ -1,48 +1,49 @@
+using Data;
 using Extensions;
-using System;
+using Progress;
 using System.Linq;
 using Tiles;
 using UnityEngine;
 using Zenject;
 
-public class Level : MonoBehaviour, ILevelProgress
+namespace Environment
 {
-	[SerializeField] private TileHolder _tileHolder;
-
-	private LevelsDatasProvider _levelDataController;
-
-	public TileHolder TileHolder => _tileHolder;
-
-	public event Action TileUnavalailable;
-	public event Action TileAvailable;
-
-	[Inject]
-	private void Construct(LevelsDatasProvider levelDataController)
+	public class Level : MonoBehaviour, ILevelProgress
 	{
-		_levelDataController = levelDataController;
-	}
+		[SerializeField] private TileHolder _tileHolder;
 
-	public Tile GetFreeTile()
-	{
-		var tile = GetFreeTile(_tileHolder);
-		return tile;
-	}
+		private LevelsDatasProvider _levelDataController;
 
-	public bool IsSpace()
-	{
-		return _tileHolder.TilesBundle.Any(tile => tile.IsAvailable());
-	}
+		public TileHolder TileHolder => _tileHolder;
 
-	private Tile GetFreeTile(TileHolder tileHolder)
-	{
-		var freeTile = tileHolder.TilesBundle.GetRandom(tile => tile.IsAvailable());
-		return freeTile;
-	}
+		[Inject]
+		private void Construct(LevelsDatasProvider levelDataController)
+		{
+			_levelDataController = levelDataController;
+		}
 
-	public void LoadProgress(LevelData levelData) { }
+		public Tile GetFreeTile()
+		{
+			var tile = GetFreeTile(_tileHolder);
+			return tile;
+		}
 
-	public void SaveProgress(LevelData levelData)
-	{
-		_levelDataController.SaveLevelData(_tileHolder);
+		public bool IsSpace()
+		{
+			return _tileHolder.TilesBundle.Any(tile => tile.IsAvailable());
+		}
+
+		private Tile GetFreeTile(TileHolder tileHolder)
+		{
+			var freeTile = tileHolder.TilesBundle.GetRandom(tile => tile.IsAvailable());
+			return freeTile;
+		}
+
+		public void LoadProgress(LevelData levelData) { }
+
+		public void SaveProgress(LevelData levelData)
+		{
+			_levelDataController.SaveLevelData(_tileHolder);
+		}
 	}
 }

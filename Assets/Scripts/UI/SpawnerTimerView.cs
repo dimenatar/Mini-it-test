@@ -1,4 +1,5 @@
 using Doozy.Runtime.Reactor;
+using Fruits;
 using UnityEngine;
 using Zenject;
 
@@ -33,7 +34,7 @@ namespace UI
 
 		private void OnPassedTimeChanged(float time)
 		{
-			_progressor.PlayToProgress(1 - time / _initialFruitSpawner.Delay);
+			_progressor.SetProgressAt(1 - time / _initialFruitSpawner.Delay);
 		}
 	}
 }

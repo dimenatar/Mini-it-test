@@ -1,7 +1,10 @@
-public interface IActivatable
+namespace UserInput
 {
-    public bool IsEnabled { get; }
+	public interface IActivatable
+	{
+		public bool IsEnabled { get; }
 
-    public void Enable();
-    public void Disable();
+		public void Enable();
+		public void Disable();
+	}
 }

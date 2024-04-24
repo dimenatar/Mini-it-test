@@ -1,4 +1,7 @@
-public interface IMouseUpListener
+namespace UserInput
 {
-    void MouseUp();
+	public interface IMouseUpListener
+	{
+		void MouseUp();
+	}
 }

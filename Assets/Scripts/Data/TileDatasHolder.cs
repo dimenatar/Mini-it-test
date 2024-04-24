@@ -1,21 +1,24 @@
 using System;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class TileDatasHolder
+namespace Data
 {
-	[NonSerialized]
-	private List<TileData> _tileDatas;
-
-	public List<TileData> TileDatas => new List<TileData>(_tileDatas);
-
-	public TileDatasHolder()
+	[Serializable]
+	public class TileDatasHolder
 	{
-		_tileDatas = new List<TileData>();
-	}
+		[NonSerialized]
+		private List<TileData> _tileDatas;
 
-	public TileDatasHolder(List<TileData> tileDatas)
-	{
-		_tileDatas = tileDatas;
+		public List<TileData> TileDatas => new List<TileData>(_tileDatas);
+
+		public TileDatasHolder()
+		{
+			_tileDatas = new List<TileData>();
+		}
+
+		public TileDatasHolder(List<TileData> tileDatas)
+		{
+			_tileDatas = tileDatas;
+		}
 	}
 }

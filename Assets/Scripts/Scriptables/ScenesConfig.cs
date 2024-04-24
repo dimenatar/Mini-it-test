@@ -1,10 +1,14 @@
 using AYellowpaper.SerializedCollections;
+using Scenes;
 using UnityEngine;
 
-[CreateAssetMenu(order = 68)]
-public class ScenesConfig : ScriptableObject
+namespace Scriptables
 {
-    [SerializeField] private SerializedDictionary<SceneType, string> _scenes;
+	[CreateAssetMenu(order = 68)]
+	public class ScenesConfig : ScriptableObject
+	{
+		[SerializeField] private SerializedDictionary<SceneType, string> _scenes;
 
-    public SerializedDictionary<SceneType, string> Scenes => _scenes;
+		public SerializedDictionary<SceneType, string> Scenes => _scenes;
+	}
 }

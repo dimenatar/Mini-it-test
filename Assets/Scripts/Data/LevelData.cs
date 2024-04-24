@@ -1,19 +1,22 @@
 using Fruits;
 using System;
 
-[Serializable]
-public class LevelData
+namespace Data
 {
-    public FruitName initialFruit;
-    public TileDatasHolder tileDatasHolder;
+	[Serializable]
+	public class LevelData
+	{
+		public FruitName initialFruit;
+		public TileDatasHolder tileDatasHolder;
 
-    public LevelData() 
-    {
-        tileDatasHolder = new TileDatasHolder();
-    }
+		public LevelData()
+		{
+			tileDatasHolder = new TileDatasHolder();
+		}
 
-    public LevelData(TileDatasHolder tileDatasHolder) : this()
-    {
-        this.tileDatasHolder = tileDatasHolder;
-    }
+		public LevelData(TileDatasHolder tileDatasHolder) : this()
+		{
+			this.tileDatasHolder = tileDatasHolder;
+		}
+	}
 }

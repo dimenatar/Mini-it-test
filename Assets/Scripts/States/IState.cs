@@ -1,5 +1,8 @@
-public interface IState
+namespace States
 {
-    void Enter(object data);
-    void Exit();
+	public interface IState
+	{
+		void Enter(object data);
+		void Exit();
+	}
 }
