@@ -45,11 +45,11 @@ public class Dragger : MonoBehaviour, IActivatable
                     {
                         _pointingTile = tile;
                         PointingTileChanged?.Invoke(tile);
-                        _currentDraggable.ReceivePosition(tile.GetBildingPoint());
+                        //_currentDraggable.ReceivePosition(tile.GetBildingPoint());
                     }
                 }
             }
-            else if (Physics.Raycast(ray, out RaycastHit raycastHit1, float.MaxValue, _groundLayer))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit1, float.MaxValue, _groundLayer))
             {
                 _currentDraggable.ReceivePosition(raycastHit1.point);
             }

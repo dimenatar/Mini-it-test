@@ -1,7 +1,7 @@
 using Fruits;
 using UnityEngine;
 
-namespace Merdge
+namespace Merge
 {
 	[System.Serializable]
     public struct FruitsEvolutionFormula

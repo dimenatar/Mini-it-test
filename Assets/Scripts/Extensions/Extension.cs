@@ -112,6 +112,11 @@ namespace Extensions
             return transform.DOScale(0, duration).SetEase(ease).SetUpdate(update).OnComplete(() => transform.gameObject.SetActive(false));
         }
 
+        public static Tween ScaleOut(this Transform transform, float duration = 0.5f, Ease ease = Ease.Unset, bool update = false)
+        {
+            return transform.DOScale(0, duration).SetEase(ease).SetUpdate(update);
+        }
+
         /// <summary>
         /// Changes image alpha
         /// </summary>

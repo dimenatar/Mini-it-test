@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Environment;
 using Extensions;
 using Fruits;
@@ -7,9 +8,9 @@ using System.Collections.Generic;
 using Tiles;
 using Zenject;
 
-namespace Merdge
+namespace Merge
 {
-	public class Merdger
+	public class Merger
     {
         private FruitEvolutionConfig _buildingEvolutionConfig;
         private float _delayToMergde;
@@ -21,7 +22,7 @@ namespace Merdge
         private List<FruitsEvolutionFormula> _formulas;
 
         [Inject]
-        public Merdger(FruitEvolutionConfig buildingEvolutionConfig, float delayToMergde, FruitSpawner buildingCreator, InputActivator inputActivator, LevelProvider levelProvider)
+        public Merger(FruitEvolutionConfig buildingEvolutionConfig, float delayToMergde, FruitSpawner buildingCreator, InputActivator inputActivator, LevelProvider levelProvider)
         {
             _buildingEvolutionConfig = buildingEvolutionConfig;
             _delayToMergde = delayToMergde;
@@ -34,17 +35,17 @@ namespace Merdge
 
         public event Action<Fruit> Merged;
 
-        public bool IsReadyToMerdge(FruitName fruitName)
+        public bool IsReadyToMerge(FruitName fruitName)
         {
             FruitsEvolutionFormula? formula = _formulas.Find(formula => formula.Component == fruitName);
             return !Extension.IsDefault(formula.Value);
         }
 
-        public bool IsReadyToMerdge(FruitData first, FruitData second)
+        public bool IsReadyToMerge(FruitData first, FruitData second)
         {
             if (first.FruitName == second.FruitName)
             {
-                return IsReadyToMerdge(first.FruitName);
+                return IsReadyToMerge(first.FruitName);
             }
             return false;
         }
@@ -54,31 +55,35 @@ namespace Merdge
             return _formulas.Find(formula => formula.Component == fruits[0].FruitData.FruitName).Result;
         }
 
-        public void Merdge(Tile tile, List<Fruit> buildings)
+        public void Merge(Tile tile, List<Fruit> buildings)
         {
-            Merdge(tile, buildings.ToArray());
+            Merge(tile, buildings.ToArray());
         }
 
-        public void Merdge(Tile tile, params Fruit[] fruits)
+        public async void Merge(Tile tile, params Fruit[] fruits)
         {
             _inputActivator.DisableInput();
-            MonobehaviourExtensions.DODelayed(() => MerdgeDelayed(tile, fruits), _delayToMergde);
-        }
 
-        private void MerdgeDelayed(Tile tile, params Fruit[] fruits)
-        {
-            //var result = GetNextBuilding(buildings[0].BuildingData);
-            var result = _formulas.Find(formula => formula.Component == fruits[0].FruitData.FruitName).Result;
+			for (int i = 0; i < fruits.Length; i++)
+			{
+                fruits[i].ScaleOut();
+			}
 
-            _inputActivator.EnableInput();
-            var resultFruit = _buildingCreator.SpawnFruit(tile, result);
-            //var resultBuilding = _factory.CreateBuilding(result, tile.transform.position, tile.transform);
-            for (int i = 0; i < fruits.Length; i++)
-            {
-                UnityEngine.Object.Destroy(fruits[i].gameObject);
-            }
+			await UniTask.WaitForSeconds(_delayToMergde);
 
-            Merged?.Invoke(resultFruit);
-        }
+			var result = _formulas.Find(formula => formula.Component == fruits[0].FruitData.FruitName).Result;
+
+			var resultFruit = _buildingCreator.SpawnFruit(tile, result);
+            resultFruit.ScaleIn();
+
+			for (int i = 0; i < fruits.Length; i++)
+			{
+				UnityEngine.Object.Destroy(fruits[i].gameObject);
+			}
+
+			_inputActivator.EnableInput();
+			Merged?.Invoke(resultFruit);
+
+		}
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ed26410a6c3e24ea0eedb511b15bb3, type: 3}
   m_Name: Tiles Colors Config
   m_EditorClassIdentifier: 
-  _startDragColor: {r: 0.9970249, g: 1, b: 0.495283, a: 1}
+  _startDragColor: {r: 0.49411762, g: 1, b: 0.8114437, a: 1}
   _readyToMergeColor: {r: 0.4669811, g: 1, b: 0.51755667, a: 1}
   _notReadyToMergeColor: {r: 1, g: 0.3254717, b: 0.3254717, a: 1}

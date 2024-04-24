@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1856697329}
-  _delayToDrag: 0.3
+  _delayToDrag: 0
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64

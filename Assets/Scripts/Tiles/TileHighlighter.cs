@@ -1,5 +1,5 @@
 using Fruits;
-using Merdge;
+using Merge;
 
 namespace Tiles
 {
@@ -7,12 +7,12 @@ namespace Tiles
     {
         private TilesColorsConfig _tileColorsConfig;
         private Dragger _dragger;
-        private Merdger _merger;
+        private Merger _merger;
 
         private Fruit _currentFruit;
         private Tile _prevTile;
 
-        public TileHighlighter(TilesColorsConfig tileColorsConfig, Merdger merger)
+        public TileHighlighter(TilesColorsConfig tileColorsConfig, Merger merger)
         {
             _tileColorsConfig = tileColorsConfig;
             _merger = merger;
@@ -48,7 +48,7 @@ namespace Tiles
                 }
                 else
                 {
-                    if (_merger.IsReadyToMerdge(_currentFruit.FruitData, tileFruit.FruitData))
+                    if (_merger.IsReadyToMerge(_currentFruit.FruitData, tileFruit.FruitData))
                     {
                         tile.Highlight(_tileColorsConfig.ReadyToMergeColor);
                     }

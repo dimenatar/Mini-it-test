@@ -1,5 +1,5 @@
 using Fruits;
-using Merdge;
+using Merge;
 using System.Collections.Generic;
 using Tiles;
 using UnityEngine;
@@ -10,7 +10,7 @@ public class FruitPlacer : MonoBehaviour
     [SerializeField] private TileHolder _tileHolder;
 
     private Dragger _dragger;
-    private Merdger _merdger;
+    private Merger _merdger;
 
     private IDraggable _currentDraggable;
     private Tile _startTile;
@@ -19,7 +19,7 @@ public class FruitPlacer : MonoBehaviour
     private List<Tile> _visitedTiles;
 
     [Inject]
-    private void Construct(Dragger dragger, Merdger merdger)
+    private void Construct(Dragger dragger, Merger merdger)
     {
         _dragger = dragger;
         _merdger = merdger;
@@ -66,12 +66,12 @@ public class FruitPlacer : MonoBehaviour
 
         if (_pointingTile.TileContent is Fruit tileFruit)
         {
-            if (_merdger.IsReadyToMerdge(fruit.FruitData, tileFruit.FruitData))
+            if (_merdger.IsReadyToMerge(fruit.FruitData, tileFruit.FruitData))
             {
                 draggable.ReceivePosition(_pointingTile.GetBildingPoint());
                 PrintList(_visitedTiles);
                 _visitedTiles.ForEach(tile => tile.ClearTile());
-                _merdger.Merdge(_pointingTile, fruit, tileFruit);
+                _merdger.Merge(_pointingTile, fruit, tileFruit);
             }
             else
             {
@@ -92,18 +92,6 @@ public class FruitPlacer : MonoBehaviour
 
         _visitedTiles.Clear();
         _pointingTile = null;
-    }
-
-    private void SetBuildingToCurrentTile(Fruit fruit)
-    {
-        fruit.ReceivePosition(_visitedTiles[^1].GetBildingPoint());
-        if (_visitedTiles[^1].TileContent == null)
-        {
-            _visitedTiles[^1].SetTileContent(fruit);
-            //var tile = _islands.TilesBundle.Find(t => t.TileContent == building);
-            //tile?.ClearBuilding();
-            fruit.SetTile(_visitedTiles[^1]);
-        }
     }
 
     private void ReturnToPrevTile(IDraggable draggable, Fruit fruit)

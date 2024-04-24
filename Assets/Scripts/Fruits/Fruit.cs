@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Extensions;
 using System;
 using Tiles;
@@ -9,17 +10,18 @@ namespace Fruits
 	public class Fruit : MonoBehaviour, IDraggable, ITileContent
     {
         [SerializeField] private TextMeshPro _text;
-        [SerializeField] private Collider _collider;
         [SerializeField] private Vector3 _offset;
 
+        [SerializeField] private float _scaleInDuration = 0.3f;
+        [SerializeField] private float _scaleOutDuration = 0.3f;
+        [SerializeField] private Ease _scaleInEase;
+        [SerializeField] private Ease _scaleOutEase;
+
         public FruitData FruitData { get; private set; }
-        public Collider Collider => _collider;
         public Tile Tile { get; private set; }
-        public Bounds Bounds => _collider.bounds;
         public Vector3 Offset => _offset;
 
         public event Action<Fruit> Destroyed;
-        public event Action<Fruit> Dropped;
 
         private void OnDestroy()
         {
@@ -40,7 +42,7 @@ namespace Fruits
         public void SetTile(Tile tile)
         {
             //transform.position = tile.GetBildingPoint() + _offset;
-            ReceivePosition(tile.GetBildingPoint());
+            //ReceivePosition(tile.GetBildingPoint());
             transform.SetParent(tile.transform);
             Tile = tile;
         }
@@ -53,6 +55,16 @@ namespace Fruits
         public void StopDrag()
         {
 
+        }
+
+        public void ScaleIn()
+        {
+            transform.ScaleIn(_scaleInEase, _scaleInDuration);
+        }
+
+        public void ScaleOut()
+        {
+            transform.ScaleOut(_scaleOutDuration, _scaleOutEase);
         }
     }
 }

@@ -1,6 +1,6 @@
 using Environment;
 using Fruits;
-using Merdge;
+using Merge;
 using Scriptables;
 using Tiles;
 using UnityEngine;
@@ -33,7 +33,7 @@ public class ProjectInstaller : MonoInstaller
 
         LevelProvider levelProvider = new LevelProvider();
         InputActivator inputActivator = new InputActivator();
-        Merdger merdger = new Merdger(_fruitEvolutionConfig, _delayToMerdge, fruitSpawner, inputActivator, levelProvider);
+        Merger merdger = new Merger(_fruitEvolutionConfig, _delayToMerdge, fruitSpawner, inputActivator, levelProvider);
 
         bool isEditor = Application.isEditor;
         IInput input;
@@ -79,7 +79,7 @@ public class ProjectInstaller : MonoInstaller
         Container.Bind<InputActivator>().FromInstance(inputActivator).AsSingle();
         Container.Bind<FruitSpawner>().FromInstance(fruitSpawner).AsSingle();
       
-        Container.Bind<Merdger>().FromInstance(merdger).AsSingle();
+        Container.Bind<Merger>().FromInstance(merdger).AsSingle();
         Container.Bind<LevelsDatasProvider>().FromInstance(levelsDatasProvider).AsSingle();
         Container.Bind<LevelLoader>().FromInstance(levelLoader).AsSingle();
         Container.Bind<InitialState>().FromInstance(initialState).AsSingle();

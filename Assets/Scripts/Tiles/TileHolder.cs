@@ -1,3 +1,4 @@
+using Extensions;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace Tiles
 
 		private void OnTileContentChanged(Tile tile, ITileContent tileContent)
         {
+            this.Print($"content changed. Tile {tile.ID}, content: {tileContent}");
+
             TileContentChanged?.Invoke(tile, tileContent);
             if (tileContent == null)
             {
