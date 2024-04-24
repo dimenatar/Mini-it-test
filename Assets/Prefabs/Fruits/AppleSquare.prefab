@@ -101,7 +101,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6485a08401c1d9142ba94a40b593b59f, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 899403940212772294, guid: 6485a08401c1d9142ba94a40b593b59f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -272,8 +272,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 6428230442517499038}
-  _collider: {fileID: 9195533919426616035}
   _offset: {x: 0, y: 0, z: -0.5}
+  _scaleInDuration: 0.3
+  _scaleOutDuration: 0.3
+  _scaleInEase: 0
+  _scaleOutEase: 0
 --- !u!65 &9195533919426616035
 BoxCollider:
   m_ObjectHideFlags: 0
