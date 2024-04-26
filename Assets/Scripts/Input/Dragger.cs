@@ -33,7 +33,6 @@ namespace UserInput
 			_input = input;
 			_input.MouseDownNonUI += MouseDown;
 			_input.MouseUp += MouseUp;
-			print(input);
 		}
 
 		private void OnDestroy()

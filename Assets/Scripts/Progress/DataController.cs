@@ -83,7 +83,6 @@ namespace Progress
 						_progresses[i].SaveProgress(_progressManager);
 					}
 				}
-				this.Print("saveData");
 				_progressManager.UpdateUserData();
 			}
 		}

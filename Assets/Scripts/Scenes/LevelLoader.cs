@@ -28,5 +28,12 @@ namespace Scenes
 			var scene = _scenesConfig.Scenes[sceneType];
 			SceneManager.LoadScene(scene);
 		}
+
+		public async Task ReloadSceneAsync()
+		{
+			var scene = SceneManager.GetActiveScene();
+			var loading = SceneManager.LoadSceneAsync(scene.name);
+			await loading;
+		}
 	}
 }

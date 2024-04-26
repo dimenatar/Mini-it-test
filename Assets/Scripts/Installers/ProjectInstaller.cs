@@ -1,5 +1,6 @@
 using Data;
 using Environment;
+using Extensions;
 using Fruits;
 using Merge;
 using Particles;
@@ -31,12 +32,14 @@ namespace Installers
 		private StatesController _states;
 
 		[SerializeField] private float _delayToMerdge = 1f;
+		[SerializeField] private long _vibrationsDurationMS = 100;
 
 		public override void InstallBindings()
 		{
 			DictionaryProgressManager dictionaryProgressManager = new DictionaryProgressManager();
 			DataController dataController = new DataController(dictionaryProgressManager);
 			LevelEventsProvider levelEventsProvider = new LevelEventsProvider();
+			Vibrations vibrations = new Vibrations(_vibrationsDurationMS);
 
 			FruitSpawner fruitSpawner = new FruitSpawner(_fruitModels, _fruitDataBundle);
 
@@ -64,6 +67,7 @@ namespace Installers
 			LevelsDatasProvider levelsDatasProvider = new LevelsDatasProvider(dataController, _initialFruitName);
 			LevelDataController levelDataController = new LevelDataController(levelEventsProvider, levelsDatasProvider);
 			LevelLoader levelLoader = new LevelLoader(_scenesConfig);
+			Restarter restarter = new Restarter(dataController, levelLoader);
 
 			inputActivator.AddActivatables(input, inputEvents);
 
@@ -101,6 +105,8 @@ namespace Installers
 			Container.Bind<StatesController>().FromInstance(_states).AsSingle();
 			Container.Bind<FruitName>().FromInstance(_initialFruitName);
 			Container.Bind<ParticlePlayer>().FromInstance(particlePlayer);
+			Container.Bind<Restarter>().FromInstance(restarter);
+			Container.Bind<Vibrations>().FromInstance(vibrations);
 		}
 	}
 }

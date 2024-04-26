@@ -1,3 +1,4 @@
+using Extensions;
 using Merge;
 using System.Collections.Generic;
 using Tiles;
@@ -13,6 +14,7 @@ namespace Fruits
 
 		private Dragger _dragger;
 		private Merger _merdger;
+		private Vibrations _vibrations;
 
 		private IDraggable _currentDraggable;
 		private Tile _startTile;
@@ -21,7 +23,7 @@ namespace Fruits
 		private List<Tile> _visitedTiles;
 
 		[Inject]
-		private void Construct(Dragger dragger, Merger merdger)
+		private void Construct(Dragger dragger, Merger merdger, Vibrations vibrations)
 		{
 			_dragger = dragger;
 			_merdger = merdger;
@@ -69,12 +71,14 @@ namespace Fruits
 				if (_merdger.IsReadyToMerge(fruit.FruitData, tileFruit.FruitData))
 				{
 					draggable.ReceivePosition(_pointingTile.GetBildingPoint());
-					PrintList(_visitedTiles);
+
 					_visitedTiles.ForEach(tile => tile.ClearTile());
+					_vibrations.VibrateSoft();
 					_merdger.Merge(_pointingTile, fruit, tileFruit);
 				}
 				else
 				{
+					_vibrations.VibrateMedium();
 					ReturnToPrevTile(draggable, fruit);
 				}
 				isPlaced = true;
