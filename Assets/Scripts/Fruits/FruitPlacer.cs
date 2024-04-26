@@ -27,6 +27,7 @@ namespace Fruits
 		{
 			_dragger = dragger;
 			_merdger = merdger;
+			_vibrations = vibrations;
 		}
 
 		private void Awake()

@@ -36,14 +36,14 @@ namespace Extensions
 		{
 #if !UNITY_EDITOR && UNITY_ANDROID
 
-        if (_instance.SDK_version >= 26)
+        if (SDK_version >= 26)
         {
-            AndroidJavaObject vibrationEffectObj = _instance._vibrationEffect.CallStatic<AndroidJavaObject>("createOneShot", millisecond, amplitude);
-            _instance._vibrator.Call("vibrate", vibrationEffectObj);
+            AndroidJavaObject vibrationEffectObj = _vibrationEffect.CallStatic<AndroidJavaObject>("createOneShot", millisecond, amplitude);
+            _vibrator.Call("vibrate", vibrationEffectObj);
         }
         else
         {
-            _instance._vibrator.Call("vibrate", millisecond);
+            _vibrator.Call("vibrate", millisecond);
         }
 #endif
 		}
